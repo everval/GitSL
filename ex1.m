@@ -36,19 +36,20 @@ imagesc(segmented)
 figure
 imagesc(segmented_std)
 colormap(hot)
-%% Run EM algorithm
-[gamma_z,~,~,~]=EMalgorithm(Y,3,100);
-
-%%Create image of the results
-segmented1=zeros(size(pwi,2),size(dwi,1));
-segmented2=zeros(size(pwi,2),size(dwi,1));
-segmented3=zeros(size(pwi,2),size(dwi,1));
-segmented1(mask==1)=gamma_z(:,1);
-imagesc(segmented1)
-figure
-segmented2(mask==1)=gamma_z(:,2);
-imagesc(segmented2)
-figure
-segmented3(mask==1)=gamma_z(:,3);
-imagesc(segmented3)
+%%
+% %% Run EM algorithm
+% [gamma_z,~,~,~]=EMalgorithm(Y,3,100);
+% 
+% %%Create image of the results
+% segmented1=zeros(size(pwi,2),size(dwi,1));
+% segmented2=zeros(size(pwi,2),size(dwi,1));
+% segmented3=zeros(size(pwi,2),size(dwi,1));
+% segmented1(mask==1)=gamma_z(:,1);
+% imagesc(segmented1)
+% figure
+% segmented2(mask==1)=gamma_z(:,2);
+% imagesc(segmented2)
+% figure
+% segmented3(mask==1)=gamma_z(:,3);
+% imagesc(segmented3)
 

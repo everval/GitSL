@@ -26,6 +26,7 @@ K = 3;
 segmented1=zeros(size(pwi,2),size(dwi,1));
 segmented2=zeros(size(pwi,2),size(dwi,1));
 
+figure
 segmented1(mask==1)=gamma_z(:,1);
 imagesc(segmented1)
 figure
