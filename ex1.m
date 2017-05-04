@@ -20,7 +20,7 @@ Y_z=zscore(Y);
 %% Perform k-means analysis
 % K=3;
 initial_centroids=[max(Y(:,1)) min(Y(:,2)); min(Y(:,1)) max(Y(:,2)); mean(Y(:,1)) mean(Y(:,2))];
-[centroids, idx]=runkMeans(Y,initial_centroids,100,1);
+[centroids, idx]=runkMeans(Y,initial_centroids,10,1);
 
 
 % initial_centroids_std=[max(Y_z(:,1)) min(Y_z(:,2)); min(Y_z(:,1)) max(Y_z(:,2)); mean(Y_z(:,1)) mean(Y_z(:,2))];
@@ -36,20 +36,20 @@ imagesc(segmented)
 figure
 imagesc(segmented_std)
 colormap(hot)
-%%
-% %% Run EM algorithm
-% [gamma_z,~,~,~]=EMalgorithm(Y,3,100);
-% 
-% %%Create image of the results
-% segmented1=zeros(size(pwi,2),size(dwi,1));
-% segmented2=zeros(size(pwi,2),size(dwi,1));
-% segmented3=zeros(size(pwi,2),size(dwi,1));
-% segmented1(mask==1)=gamma_z(:,1);
-% imagesc(segmented1)
-% figure
-% segmented2(mask==1)=gamma_z(:,2);
-% imagesc(segmented2)
-% figure
-% segmented3(mask==1)=gamma_z(:,3);
-% imagesc(segmented3)
+%% Run EM algorithm
+[gamma_z,~,~,~]=EMalgorithm(Y,3,100);
+
+%%Create image of the results
+segmented1=zeros(size(pwi,2),size(dwi,1));
+segmented2=zeros(size(pwi,2),size(dwi,1));
+segmented3=zeros(size(pwi,2),size(dwi,1));
+segmented1(mask==1)=gamma_z(:,1);
+imagesc(segmented1)
+figure
+segmented2(mask==1)=gamma_z(:,2);
+imagesc(segmented2)
+figure
+segmented3(mask==1)=gamma_z(:,3);
+imagesc(segmented3)
+
 

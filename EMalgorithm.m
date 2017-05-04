@@ -12,10 +12,16 @@ priors = repmat(1/K,1,K);
 % tol = 1e-4;
 conv=0;
 count=1;
-while count<=MaxIts && conv~=1
+while count<MaxIts && conv~=1
     gamma_z=Estep(Y,means,covs,priors);
-%     means_lag=means;
+    if any(sum(gamma_z)==0)
+        pause;
+    end
+    %     means_lag=means;
     [means,covs,priors]=Mstep(Y,gamma_z);
+%     if any(isnan(means))||any(isnan(covs))||any(covs<=0)
+%         pause;
+%     end
     count=count+1;
 %     if all(means-means_lag)<=tol
 %         conv=1;
